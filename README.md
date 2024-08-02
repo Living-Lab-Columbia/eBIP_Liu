@@ -1,1 +1,1 @@
-# Battery for Imagery and Perception (eBIP) (Liu et al., 2024)
+# Battery for Imagery and Perception (eBIP) (Liu et al., 20
