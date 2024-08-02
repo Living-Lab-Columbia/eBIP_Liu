@@ -1,5 +1,29 @@
+## ANOVA statistics
+library(lme4)
+library(afex)
+library(emmeans)
 library(tidyverse)
 
+df = read.csv('df_agg.csv')
+df$IorP = factor(df$IorP)
+df$field = factor(df$field)
+df$participant = factor(df$participant)
+
+df %>% distinct(participant)
+
+# Two way anova: RT
+aov.1 <- aov_ez(id = "participant", dv = "ans_rt", data = df, within = c("IorP", "field"))
+summary(aov.1)
+emmeans(aov.1, pairwise ~ field*IorP)
+
+# Two way anova: Accuracy
+aov.2 <- aov_ez(id = "participant", dv = "ans_corr", data = df, within = c("IorP", "field"))
+summary(aov.2)
+emmeans(aov.2, pairwise ~ field*IorP)
+
+
+## ANOVA visualization
+library(tidyverse)
 df_all = read.csv('df_all.csv')
 head(df_all)
 
